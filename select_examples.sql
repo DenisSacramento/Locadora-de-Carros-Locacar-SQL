@@ -1,23 +1,28 @@
+-- 1 - Veículos disponíveis
+SELECT modelo, marca, ano, km_atual 
+FROM VEICULO 
+WHERE status = 'Disponível' 
+ORDER BY ano DESC;
 
--- =============================
--- CONSULTAS MODELO
--- =============================
+-- 2 - Contratos ativos com motorista e veículo
+SELECT 
+    C.id_contrato,
+    M.nome AS Motorista,
+    V.modelo AS Veiculo,
+    V.placa,
+    C.data_inicio,
+    C.valor_semanal
+FROM CONTRATO C
+JOIN MOTORISTA M ON C.id_motorista = M.id_motorista
+JOIN VEICULO V ON C.id_veiculo = V.id_veiculo
+WHERE C.status_contrato = 'Ativo';
 
--- Todos os motoristas
-SELECT * FROM MOTORISTA;
+-- 3 - Total gasto em manutenção por veículo
+SELECT 
+    V.modelo,
+    V.placa,
+    SUM(M.custo) AS Total_Manutencao
+FROM VEICULO V
+JOIN MANUTENCAO M ON V.id_veiculo = M.id_veiculo
+GROUP BY V.id_veiculo;
 
--- Todos os veículos
-SELECT * FROM VEICULO;
-
--- Contratos ativos com nomes e placas
-SELECT c.id_contrato, m.nome, v.placa, c.valor_semanal
-FROM CONTRATO c
-JOIN MOTORISTA m ON m.id_motorista = c.id_motorista
-JOIN VEICULO v ON v.id_veiculo = c.id_veiculo
-WHERE c.status_contrato = 'Ativo';
-
--- Histórico de checklist por veículo
-SELECT v.placa, ch.*
-FROM CHECKLIST ch
-JOIN VEICULO v ON v.id_veiculo = ch.id_veiculo
-ORDER BY ch.data_check DESC;

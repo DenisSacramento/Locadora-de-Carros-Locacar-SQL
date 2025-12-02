@@ -1,91 +1,134 @@
+# 🚗 Sistema de Locação de Veículos — Scripts SQL Completo
 
-# 🚗 Sistema de Aluguel de Veículos — Banco de Dados SQL
+Este repositório contém toda a estrutura SQL do sistema de locação de veículos, incluindo:
+- Criação das tabelas do banco de dados (DDL)
+- Inserção de dados coerentes (INSERT)
+- Consultas SQL (SELECT)
+- Comandos de atualização (UPDATE)
+- Remoção de dados com critérios (DELETE)
+- Instruções completas de execução
 
-Este repositório contém todos os scripts necessários para criar, popular e testar um banco de dados completo para um sistema de aluguel de carros.
-
----
-
-## 🗂 Arquivos incluídos
-
-```
-create_tables.sql       → Criação completa das tabelas
-inserts.sql             → Inserts iniciais
-select_examples.sql     → Consultas prontas (SELECT)
-delete_examples.sql     → Exemplos de DELETE seguros
-```
+O projeto segue boas práticas de modelagem relacional, integridade referencial e uso adequado de chaves estrangeiras.
 
 ---
 
-## 🚀 Como Executar no DB-Fiddle
+## 📌 Tecnologias utilizadas
 
-1. Abra **https://db-fiddle.com/**
-2. Selecione **MySQL 8.0**
-3. Cole os scripts **na seguinte ordem**:
-
-### 1️⃣ create_tables.sql  
-Cria toda a estrutura do banco.
-
-### 2️⃣ inserts.sql  
-Adiciona dados para testes.
-
-### 3️⃣ select_examples.sql  
-Rode consultas prontas para visualizar resultados.
-
-### 4️⃣ delete_examples.sql  
-Teste exclusões (opcional).
+- **MySQL 8.x**
+- Compatível com:
+  - MySQL Workbench
+  - DB-Fiddle
+  - DBeaver
 
 ---
 
-## 📊 DER (Descrição textual do modelo)
+## 🗂 Estrutura dos arquivos
 
-### **MOTORISTA**
-- id_motorista (PK)
-- nome  
-- cpf  
-- telefone  
-- data_cadastro  
-
-### **VEICULO**
-- id_veiculo (PK)
-- placa  
-- modelo  
-- marca  
-- ano  
-- categoria  
-- km_atual  
-- status  
-- data_cadastro  
-
-### **CONTRATO**
-- id_contrato (PK)
-- id_motorista (FK)
-- id_veiculo (FK)
-- data_inicio  
-- data_fim  
-- valor_semanal  
-- status_contrato  
-
-### **CHECKLIST**
-- id_checklist (PK)
-- id_veiculo (FK)
-- data_check  
-- pneu_ok  
-- motor_ok  
-- lataria_ok  
-- observacoes  
-- fotos_url  
 
 ---
 
-## 📌 Objetivo do projeto
-Facilitar:
+## ⚙️ Como executar o projeto
 
-- Estudos de modelagem  
-- Testes para faculdades  
-- Provas práticas  
-- Projetos de portfólio  
+1. Abra seu MySQL Workbench ou DB-Fiddle.
+2. Execute primeiro o arquivo: create_tables.sql
+3. Depois execute: inserts.sql
+4. Para consultar dados: selects.sql
+5. Para realizar atualizações e exclusões: updates_deletes.sql
+
+6. 
+---
+
+## 🧱 Modelo Lógico (Resumo)
+
+Entidades principais:
+
+- **MOTORISTA**
+- **VEICULO**
+- **CONTRATO**
+- **CHECKLIST**
+- **MANUTENCAO**
+- **BOLETO**
+- **PAGAMENTO**
+
+Relacionamentos garantidos com chaves estrangeiras.
 
 ---
 
-## ✔ Autor
-Projeto gerado automaticamente via ChatGPT.
+## 📥 INSERTS — Principais registros incluídos
+
+As tabelas são populadas com dados realistas:
+
+- Motoristas
+- Veículos
+- Contratos em uso e finalizados
+- Checklists de retirada e devolução
+- Manutenções preventivas
+- Boletos gerados
+- Pagamentos realizados
+
+---
+
+## 🔍 SELECTS — Consultas incluídas
+
+As consultas utilizam:
+
+- `WHERE`
+- `ORDER BY`
+- `JOIN`
+- `GROUP BY`
+- `SUM`
+- `FILTERS`
+
+Exemplos implementados:
+
+1. Veículos disponíveis ordenados por ano  
+2. Contratos ativos com dados do motorista e veículo  
+3. Total de manutenção por veículo  
+
+---
+
+## ✏️ UPDATE — Atualizações incluídas
+
+Três atualizações reais:
+
+1. Alterar status de veículo para “Alugado”  
+2. Atualizar telefone de motorista específico  
+3. Atualizar km e status após manutenção  
+
+---
+
+## 🗑 DELETE — Exclusões incluídas
+
+Três exclusões seguras:
+
+1. Remoção de manutenção lançada por engano  
+2. Exclusão de boleto antigo e pendente  
+3. Exclusão de motorista não associado a contratos  
+
+---
+
+## 📎 Objetivo da atividade
+
+Este projeto demonstra:
+
+✔ Domínio de DDL  
+✔ Uso de DML completo (INSERT, SELECT, UPDATE, DELETE)  
+✔ Integridade referencial  
+✔ Relacionamentos 1:N e N:1  
+✔ Scripts organizados para execução no MySQL  
+
+---
+
+## 👨‍💻 Autor
+
+Projeto desenvolvido por Denis Sacramento
+Para uso acadêmico e profissional.
+
+---
+
+## 📄 Licença
+
+Este projeto é livre para uso educacional.
+
+
+

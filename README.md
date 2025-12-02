@@ -87,5 +87,4 @@ Facilitar:
 
 ---
 
-## ✔ Autor
-Projeto gerado automaticamente via ChatGPT.
+

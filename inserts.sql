@@ -1,22 +1,33 @@
-
--- =============================
--- INSERÇÃO DE DADOS INICIAIS
--- =============================
-
-INSERT INTO MOTORISTA (nome, cpf, telefone) VALUES
-('João Silva', '123.456.789-00', '11999990000'),
-('Maria Souza', '987.654.321-00', '11988887777'),
-('Carlos Oliveira', '555.666.777-88', '11991112222');
+INSERT INTO MOTORISTA (nome, cpf, telefone, cnh, validade_cnh) VALUES
+('João da Silva', '111.222.333-44', '(11) 99999-1111', '12345678900', '2026-12-31'),
+('Maria Oliveira', '555.666.777-88', '(21) 98888-2222', '09876543211', '2025-05-20'),
+('Carlos Pereira', '999.888.777-66', '(31) 97777-3333', '11223344556', '2024-10-10');
 
 INSERT INTO VEICULO (placa, modelo, marca, ano, categoria, km_atual, status) VALUES
-('ABC1D23', 'Onix', 'Chevrolet', 2020, 'Hatch', 45000, 'Disponível'),
-('XYZ9K88', 'HB20', 'Hyundai', 2019, 'Sedan', 60000, 'Manutenção'),
-('BRA2E19', 'Cronos', 'Fiat', 2021, 'Sedan', 30000, 'Disponível');
+('ABC1D23', 'Onix', 'Chevrolet', 2022, 'Hatch', 25000, 'Disponível'),
+('XYZ9876', 'HB20', 'Hyundai', 2023, 'Hatch', 10000, 'Disponível'),
+('DEF4G56', 'Corolla', 'Toyota', 2021, 'Sedan', 45000, 'Manutenção');
+
+INSERT INTO CONTRATO (id_motorista, id_veiculo, data_inicio, valor_semanal) VALUES
+(1, 1, '2023-10-01', 450.00);
 
 INSERT INTO CONTRATO (id_motorista, id_veiculo, data_inicio, data_fim, valor_semanal, status_contrato) VALUES
-(1, 1, '2025-01-10', NULL, 350.00, 'Ativo'),
-(2, 3, '2025-02-01', '2025-02-28', 390.00, 'Finalizado');
+(2, 2, '2023-09-01', '2023-09-15', 500.00, 'Finalizado');
 
-INSERT INTO CHECKLIST (id_veiculo, data_check, pneu_ok, motor_ok, lataria_ok, observacoes, fotos_url) VALUES
-(1, '2025-01-10', TRUE, TRUE, FALSE, 'Risco lateral', 'foto1.jpg,foto2.jpg'),
-(3, '2025-02-01', TRUE, TRUE, TRUE, 'Sem observações', 'foto3.jpg');
+INSERT INTO CHECKLIST (id_contrato, tipo, data_checklist, km_registrada, observacoes) VALUES
+(1, 'Retirada', '2023-10-01', 25000, 'Veículo sem avarias, tanque cheio.'),
+(2, 'Retirada', '2023-09-01', 8000, 'Pequeno risco na porta esquerda.'),
+(2, 'Devolução', '2023-09-15', 10000, 'Veículo devolvido conforme retirada.');
+
+INSERT INTO MANUTENCAO (id_veiculo, tipo_manutencao, data_manutencao, km_realizada, descricao, custo) VALUES
+(3, 'Preventiva', '2023-10-05', 45000, 'Troca de óleo e filtros, revisão de freios.', 350.00);
+
+INSERT INTO BOLETO (id_contrato, data_emissao, data_vencimento, valor, status_boleto) VALUES
+(1, '2023-10-01', '2023-10-08', 450.00, 'Pendente'),
+(2, '2023-09-01', '2023-09-08', 500.00, 'Pago'),
+(2, '2023-09-08', '2023-09-15', 500.00, 'Pago');
+
+INSERT INTO PAGAMENTO (id_boleto, data_pagamento, valor_pago, metodo_pagamento) VALUES
+(2, '2023-09-07', 500.00, 'Pix'),
+(3, '2023-09-14', 500.00, 'Cartão');
+
